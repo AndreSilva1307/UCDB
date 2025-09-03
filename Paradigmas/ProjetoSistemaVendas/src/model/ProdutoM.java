@@ -60,5 +60,14 @@ public class ProdutoM
     public void setEstoque(int estoque) 
     {
         this.estoque = estoque;
-    } 
+    }
+    
+    public void ImprimirProduto()
+    {
+        System.out.println(" -- Produto -- ");
+        System.out.println(" Nome:      "+this.getNome());
+        System.out.println(" Preço:     "+this.getPreco());
+        System.out.println(" Código:    "+this.getCodigo());
+        System.out.println(" Estoque:   "+this.getEstoque());
+    }
 }

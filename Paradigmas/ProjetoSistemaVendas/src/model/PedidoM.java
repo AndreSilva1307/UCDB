@@ -64,4 +64,13 @@ public class PedidoM
     {
         this.valorTotal = valorTotal;
     } 
+
+    public void ImprimirPedido()
+    {
+        System.out.println(" -- Produto -- ");
+        System.out.println(" Número:       "+this.getNumero());
+        System.out.println(" Data:         "+this.getData());
+        System.out.println(" Status:       "+this.isStatus());
+        System.out.println(" Valor total:  "+this.getValorTotal());
+    }
 }
