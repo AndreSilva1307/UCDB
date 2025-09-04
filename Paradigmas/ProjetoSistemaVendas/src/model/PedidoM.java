@@ -8,7 +8,7 @@ public class PedidoM
     private int numero;
     private Date data;
     private boolean status;
-    private float valorTotal;
+    private double valorTotal;
     
     
     // Construtor
@@ -16,7 +16,7 @@ public class PedidoM
     {
     }
 
-    public PedidoM(int numero, Date data, boolean status, float valorTotal) 
+    public PedidoM(int numero, Date data, boolean status, double valorTotal) 
     {
         this.numero = numero;
         this.data = data;
@@ -55,12 +55,12 @@ public class PedidoM
         this.status = status;
     }
 
-    public float getValorTotal() 
+    public double getValorTotal() 
     {
         return valorTotal;
     }
 
-    public void setValorTotal(float valorTotal) 
+    public void setValorTotal(double valorTotal) 
     {
         this.valorTotal = valorTotal;
     } 

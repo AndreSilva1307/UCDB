@@ -4,7 +4,7 @@ public class ProdutoM
 {
     // Atributos
     private String nome;
-    private float preco;
+    private double preco;
     private int codigo;
     private int estoque;
 
@@ -13,7 +13,7 @@ public class ProdutoM
     {
     }
 
-    public ProdutoM(String nome, float preco, int codigo, int estoque) 
+    public ProdutoM(String nome, double preco, int codigo, int estoque) 
     {
         this.nome = nome;
         this.preco = preco;
@@ -32,12 +32,12 @@ public class ProdutoM
         this.nome = nome;
     }
 
-    public float getPreco() 
+    public double getPreco() 
     {
         return preco;
     }
 
-    public void setPreco(float preco) 
+    public void setPreco(double preco) 
     {
         this.preco = preco;
     }

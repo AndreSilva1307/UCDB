@@ -14,35 +14,8 @@ public class ProdutoC
         vetProdutoM = new ArrayList<ProdutoM>();
     }
 
-    public void InseriProduto(ProdutoM produtoM)
-    {
-        vetProdutoM.add(produtoM);
-        JOptionPane.showMessageDialog(null, "Produto cadastrado com Sucesso!");
-    }
-
-    public void ListarProdutos(){
-        for (ProdutoM dados:vetProdutoM)
-        {
-            dados.ImprimirProduto();
-        }
-    }
-
-    public void BuscaPorNome(String nome)
-    {
-        for (int i=0;i<vetProdutoM.size();i++)
-        {
-            if (vetProdutoM.get(i).getNome().equals(nome))
-            {
-                System.out.println("Produto encontrado!");
-                System.out.println("Nome :      "+this.vetProdutoM.get(i).getNome());
-                System.out.println(" Preço:     "+this.vetProdutoM.get(i).getPreco());
-                System.out.println(" Código:    "+this.vetProdutoM.get(i).getCodigo());
-                System.out.println(" Estoque:   "+this.vetProdutoM.get(i).getEstoque());
-            }
-        }
-    }
-
-    public void BuscaPorCodigo(int codigo)
+    // Buscar
+    public void BuscarProduto(int codigo)
     {
         for (int i=0;i<vetProdutoM.size();i++)
         {
@@ -54,6 +27,40 @@ public class ProdutoC
                 System.out.println(" Código:    "+this.vetProdutoM.get(i).getCodigo());
                 System.out.println(" Estoque:   "+this.vetProdutoM.get(i).getEstoque());
             }
+        }
+    }
+
+    // Inserção
+    public void InserirProduto(ProdutoM produtoM)
+    {
+        vetProdutoM.add(produtoM);
+        System.out.println("Produto cadastrado com Sucesso!");
+    }
+
+    //Listar
+    public void ListarProdutos()
+    {
+        for (ProdutoM dados:vetProdutoM)
+        {
+            dados.ImprimirProduto();
+        }
+    }
+
+    // Remover
+    public boolean RemoverProduto(int codigo)
+    {
+        if (codigo >= 0 && codigo < vetProdutoM.size())
+        {
+            vetProdutoM.remove(codigo);
+            System.out.println("Produto Removido com Sucesso!");
+
+           
+            return true;
+        }
+        else
+        {
+            System.out.println("Erro: Produto não existe ou não encontrado!");
+            return false;
         }
     }
 }

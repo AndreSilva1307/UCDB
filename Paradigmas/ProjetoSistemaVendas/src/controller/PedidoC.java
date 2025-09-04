@@ -14,20 +14,8 @@ public class PedidoC
         vetPedidoM = new ArrayList<PedidoM>();
     }
 
-    public void InseriPedido(PedidoM pedidoM)
-    {
-        vetPedidoM.add(pedidoM);
-        JOptionPane.showMessageDialog(null, "Pedido cadastrado com Sucesso!");
-    }
-
-    public void ListarPedido(){
-        for (PedidoM dados:vetPedidoM)
-        {
-            dados.ImprimirPedido();
-        }
-    }
-
-    public void BuscaPorNumero(int codigo)
+    // Buscar
+    public void BuscarNumero(int codigo)
     {
         for (int i=0;i<vetPedidoM.size();i++)
         {
@@ -39,6 +27,39 @@ public class PedidoC
                 System.out.println(" Status:    "+this.vetPedidoM.get(i).isStatus());
                 System.out.println(" Valor total:   "+this.vetPedidoM.get(i).getValorTotal());
             }
+        }
+    }
+
+    // Inserção
+    public void InserirPedido(PedidoM pedidoM)
+    {
+        vetPedidoM.add(pedidoM);
+        System.out.println("Pedido cadastrado com Sucesso!");
+    }
+
+    // Listar
+    public void ListarPedido(){
+        for (PedidoM dados:vetPedidoM)
+        {
+            dados.ImprimirPedido();
+        }
+    }
+
+    // Remover
+    public boolean RemoverPedido(int numero)
+    {
+        if (numero >= 0 && numero < vetPedidoM.size())
+        {
+            vetPedidoM.remove(numero);
+            System.out.println("Pedido Removido com Sucesso!");
+
+           
+            return true;
+        }
+        else
+        {
+            System.out.println("Erro: Pedido não existe ou não encontrado!");
+            return false;
         }
     }
 }
