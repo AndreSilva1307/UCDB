@@ -1,34 +1,47 @@
-import model.PedidoM;
 import model.ProdutoM;
-import controller.PedidoC;
+import model.PedidoM;
 import controller.ProdutoC;
+import controller.PedidoC;
 
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class Main
+public class Main 
 {
     public static void main(String[] args) 
     {
-        SimpleDateFormat formatador = new SimpleDateFormat("dd/MM/yyyy");
-        
-        ProdutoM laranja = new ProdutoM("Laranja", 5.99, 1, 150);
-        ProdutoM maca = new ProdutoM("Maça", 8.00, 2, 100);
-        ProdutoM uva = new ProdutoM("Uva", 12.50, 3, 32);
+        ProdutoC produtoC = new ProdutoC();
+        PedidoC pedidoC = new PedidoC();
 
-        PedidoM pedido1 = new PedidoM(1, (new Date()), true, 5.99);
-        PedidoM pedido2 = new PedidoM(2, (new Date()), false, 25.00);
-        PedidoM pedido3 = new PedidoM(3, (new Date()), true, 32.00);
+        ProdutoM arroz = new ProdutoM("Arroz", 10.0, 1, 100);
+        ProdutoM feijao = new ProdutoM("Feijão", 8.5, 2, 80);
+        ProdutoM leite = new ProdutoM("Leite", 6.0, 3, 60);
+        ProdutoM pao = new ProdutoM("Pão", 4.0, 4, 200);
+        ProdutoM ovos = new ProdutoM("Ovos", 12.0, 5, 150);
 
-        ProdutoC controller_produto=new ProdutoC();
-        controller_produto.InserirProduto(laranja);
-        controller_produto.InserirProduto(maca);
-        controller_produto.InserirProduto(uva);
-        PedidoC controller_pedido=new PedidoC();
-        controller_pedido.InserirPedido(pedido1);
-        controller_pedido.InserirPedido(pedido2);
-        controller_pedido.InserirPedido(pedido3);
+        produtoC.InserirProduto(arroz);
+        produtoC.InserirProduto(feijao);
+        produtoC.InserirProduto(leite);
+        produtoC.InserirProduto(pao);
+        produtoC.InserirProduto(ovos);
 
-        controller_pedido.ListarPedido();
+        PedidoM pedido1 = new PedidoM(1, new Date(), true);
+        pedido1.adicionarProduto(arroz);
+        pedido1.adicionarProduto(arroz); 
+        pedido1.adicionarProduto(feijao);
+        pedido1.setValorTotal(10.0 * 2 + 8.5);
+        pedidoC.InserirPedido(pedido1);
+
+        PedidoM pedido2 = new PedidoM(2, new Date(), true);
+        pedido2.adicionarProduto(pao);
+        pedido2.adicionarProduto(ovos);
+        pedido2.adicionarProduto(ovos);
+        pedido2.setValorTotal(4.0 + 12.0 * 2);
+        pedidoC.InserirPedido(pedido2);
+
+        System.out.println("=== PRODUTOS ===");
+        produtoC.ListarProdutos();
+
+        System.out.println("\n=== PEDIDOS ===");
+        pedidoC.ListarPedido();
     }
 }

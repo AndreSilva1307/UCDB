@@ -1,76 +1,84 @@
 package model;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 public class PedidoM 
 {
-    // Atributos
     private int numero;
     private Date data;
     private boolean status;
     private double valorTotal;
-    
-    
-    // Construtor
-    public PedidoM() 
-    {
-    }
+    private ArrayList<ProdutoM> produtos;
 
-    public PedidoM(int numero, Date data, boolean status, double valorTotal) 
+    public PedidoM(int numero, Date data, boolean status) 
     {
         this.numero = numero;
         this.data = data;
         this.status = status;
-        this.valorTotal = valorTotal;
+        this.produtos = new ArrayList<>();
+        this.valorTotal = 0;
     }
 
-    // Getters e Setters
     public int getNumero() 
-    {
-        return numero;
+    { 
+        return numero; 
     }
-
-    public void setNumero(int numero) 
-    {
-        this.numero = numero;
-    }
-
     public Date getData() 
-    {
-        return data;
+    { 
+        return data; 
     }
-
-    public void setData(Date data) 
-    {
-        this.data = data;
-    }
-
     public boolean isStatus() 
-    {
-        return status;
+    { 
+        return status; 
     }
-
-    public void setStatus(boolean status) 
-    {
-        this.status = status;
-    }
-
     public double getValorTotal() 
-    {
-        return valorTotal;
+    { 
+        return valorTotal; 
     }
 
     public void setValorTotal(double valorTotal) 
     {
         this.valorTotal = valorTotal;
-    } 
+    }
 
-    public void ImprimirPedido()
+    public ArrayList<ProdutoM> getProdutos() 
     {
-        System.out.println(" -- Produto -- ");
-        System.out.println(" Número:       "+this.getNumero());
-        System.out.println(" Data:         "+this.getData());
-        System.out.println(" Status:       "+this.isStatus());
-        System.out.println(" Valor total:  "+this.getValorTotal());
+        return produtos;
+    }
+
+    public void adicionarProduto(ProdutoM produto) 
+    {
+        produtos.add(produto);
+        produto.setEstoque(produto.getEstoque() - 1);
+    }
+
+    public void ImprimirPedido() 
+    {
+        System.out.println("==== PEDIDO ====");
+        System.out.println("Número: " + numero);
+        System.out.println("Data: " + data);
+        System.out.println("Status: " + (status ? "Ativo" : "Inativo"));
+        System.out.println("Valor Total: R$ " + valorTotal);
+        System.out.println("Produtos:");
+
+        ArrayList<Integer> codigosUsados = new ArrayList<>();
+
+        for (ProdutoM p : produtos) 
+        {
+            if (!codigosUsados.contains(p.getCodigo())) 
+            {
+                int count = 0;
+                for (ProdutoM prod : produtos) 
+                {
+                    if (prod.getCodigo() == p.getCodigo()) 
+                    {
+                        count++;
+                    }
+                }
+                System.out.println("- " + p.getNome() + " | Preço: R$" + p.getPreco() + " | Quantidade: " + count);
+                codigosUsados.add(p.getCodigo());
+            }
+        }
     }
 }

@@ -1,65 +1,56 @@
 package controller;
 
 import model.PedidoM;
-
-import javax.swing.*;
 import java.util.ArrayList;
 
 public class PedidoC 
 {
-    public ArrayList<PedidoM> vetPedidoM;
+    public ArrayList<PedidoM> vetPedidoM = new ArrayList<>();
 
-    public PedidoC()
+    public void InserirPedido(PedidoM pedido) 
     {
-        vetPedidoM = new ArrayList<PedidoM>();
+        vetPedidoM.add(pedido);
     }
 
-    // Buscar
-    public void BuscarNumero(int codigo)
+    public void BuscarNumero(int numero) 
     {
-        for (int i=0;i<vetPedidoM.size();i++)
-        {
-            if (vetPedidoM.get(i).getNumero() == codigo)
+        for (PedidoM p : vetPedidoM) {
+            if (p.getNumero() == numero) 
             {
-                System.out.println("Produto encontrado!");
-                System.out.println("Número :      "+this.vetPedidoM.get(i).getNumero());
-                System.out.println(" Data:     "+this.vetPedidoM.get(i).getData());
-                System.out.println(" Status:    "+this.vetPedidoM.get(i).isStatus());
-                System.out.println(" Valor total:   "+this.vetPedidoM.get(i).getValorTotal());
+                p.ImprimirPedido();
+                return;
             }
         }
+        System.out.println("Pedido não encontrado.");
     }
 
-    // Inserção
-    public void InserirPedido(PedidoM pedidoM)
+    public void RemoverPedido(int numero) 
     {
-        vetPedidoM.add(pedidoM);
-        System.out.println("Pedido cadastrado com Sucesso!");
-    }
-
-    // Listar
-    public void ListarPedido(){
-        for (PedidoM dados:vetPedidoM)
+        PedidoM encontrado = null;
+        for (PedidoM p : vetPedidoM) 
         {
-            dados.ImprimirPedido();
+            if (p.getNumero() == numero) 
+            {
+                encontrado = p;
+                break;
+            }
+        }
+
+        if (encontrado != null) 
+        {
+            vetPedidoM.remove(encontrado);
+            System.out.println("Pedido removido.");
+        } else {
+            System.out.println("Pedido não encontrado.");
         }
     }
 
-    // Remover
-    public boolean RemoverPedido(int numero)
+    public void ListarPedido() 
     {
-        if (numero >= 0 && numero < vetPedidoM.size())
+        for (PedidoM p : vetPedidoM) 
         {
-            vetPedidoM.remove(numero);
-            System.out.println("Pedido Removido com Sucesso!");
-
-           
-            return true;
-        }
-        else
-        {
-            System.out.println("Erro: Pedido não existe ou não encontrado!");
-            return false;
+            p.ImprimirPedido();
+            System.out.println("----------------------");
         }
     }
 }

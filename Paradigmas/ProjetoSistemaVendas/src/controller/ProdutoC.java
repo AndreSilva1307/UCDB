@@ -1,66 +1,57 @@
 package controller;
 
 import model.ProdutoM;
-
-import javax.swing.*;
 import java.util.ArrayList;
 
 public class ProdutoC 
 {
-    public ArrayList<ProdutoM> vetProdutoM;
+    public ArrayList<ProdutoM> vetProdutoM = new ArrayList<>();
 
-    public ProdutoC()
+    public void InserirProduto(ProdutoM produto) 
     {
-        vetProdutoM = new ArrayList<ProdutoM>();
+        vetProdutoM.add(produto);
     }
 
-    // Buscar
-    public void BuscarProduto(int codigo)
+    public void BuscarProduto(int codigo) 
     {
-        for (int i=0;i<vetProdutoM.size();i++)
+        for (ProdutoM p : vetProdutoM) 
         {
-            if (vetProdutoM.get(i).getCodigo() == codigo)
+            if (p.getCodigo() == codigo) 
             {
-                System.out.println("Produto encontrado!");
-                System.out.println("Nome :      "+this.vetProdutoM.get(i).getNome());
-                System.out.println(" Preço:     "+this.vetProdutoM.get(i).getPreco());
-                System.out.println(" Código:    "+this.vetProdutoM.get(i).getCodigo());
-                System.out.println(" Estoque:   "+this.vetProdutoM.get(i).getEstoque());
+                p.ImprimirProduto();
+                return;
             }
         }
+        System.out.println("Produto não encontrado.");
     }
 
-    // Inserção
-    public void InserirProduto(ProdutoM produtoM)
+    public void RemoverProduto(int codigo) 
     {
-        vetProdutoM.add(produtoM);
-        System.out.println("Produto cadastrado com Sucesso!");
-    }
-
-    //Listar
-    public void ListarProdutos()
-    {
-        for (ProdutoM dados:vetProdutoM)
+        ProdutoM encontrado = null;
+        for (ProdutoM p : vetProdutoM) 
         {
-            dados.ImprimirProduto();
+            if (p.getCodigo() == codigo) 
+            {
+                encontrado = p;
+                break;
+            }
+        }
+
+        if (encontrado != null) 
+        {
+            vetProdutoM.remove(encontrado);
+            System.out.println("Produto removido.");
+        } else 
+        {
+            System.out.println("Produto não encontrado.");
         }
     }
 
-    // Remover
-    public boolean RemoverProduto(int codigo)
+    public void ListarProdutos() 
     {
-        if (codigo >= 0 && codigo < vetProdutoM.size())
+        for (ProdutoM p : vetProdutoM) 
         {
-            vetProdutoM.remove(codigo);
-            System.out.println("Produto Removido com Sucesso!");
-
-           
-            return true;
-        }
-        else
-        {
-            System.out.println("Erro: Produto não existe ou não encontrado!");
-            return false;
+            p.ImprimirProduto();
         }
     }
 }
