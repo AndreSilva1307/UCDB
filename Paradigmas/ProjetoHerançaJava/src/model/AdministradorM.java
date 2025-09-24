@@ -30,7 +30,11 @@ public class AdministradorM extends EmpregadoM {
     }
 
     public double calcularSalario() {
-        return getSalarioBase() - (getSalarioBase() * getImposto() / 100) + ajudaDeCusto;
+        System.out.println("Calculando salário do administrador...");
+        double salarioLiquido = getSalarioBase() - (getSalarioBase() * getImposto() / 100) + ajudaDeCusto;
+        System.out.println("Salário Líquido: " + salarioLiquido);
+        
+        return salarioLiquido;
     }
 
     public void imprimirAdministradorM() {

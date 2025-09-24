@@ -28,7 +28,11 @@ public class OperarioM extends EmpregadoM {
     }
 
     public double calcularSalario() {
-        return getSalarioBase() - (getSalarioBase() * getImposto() / 100) + (valorProducao * comissao / 100);
+        System.out.println("Calculando salário do empregado...");
+        double salarioLiquido = getSalarioBase() - (getSalarioBase() * getImposto() / 100) + (valorProducao * comissao / 100);
+        System.out.println("Salário Líquido: " + salarioLiquido);
+        
+        return salarioLiquido;
     }
 
     public void imprimirOperarioM() {

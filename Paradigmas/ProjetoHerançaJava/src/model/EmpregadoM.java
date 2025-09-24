@@ -19,6 +19,32 @@ public class EmpregadoM extends PessoaM {
         this.imposto = imposto;
     }
 
+    public EmpregadoM(PessoaM pessoa, int codigoSetor, double salarioBase) {
+        super(pessoa.getNome(), pessoa.getEndereco(), pessoa.getTelefone());
+        this.codigoSetor = codigoSetor;
+        this.salarioBase = salarioBase;
+        if(salarioBase <= 2428.80)
+        {
+            this.imposto = 0;
+        }
+        else if(salarioBase >= 2428.81 && salarioBase <= 2826.65)
+        {
+            this.imposto = 7.5;
+        }
+        else if(salarioBase >= 2826.66 && salarioBase <= 3751.05)
+        {
+            this.imposto = 15;
+        }
+        else if(salarioBase >= 3751.06 && salarioBase <= 4664.68)
+        {
+            this.imposto = 22.5;
+        }
+        else
+        {
+            this.imposto = 27.5;
+        }
+    }
+
     public int getCodigoSetor() {
         return codigoSetor;
     }
@@ -44,7 +70,11 @@ public class EmpregadoM extends PessoaM {
     }
 
     public double calcularSalario() {
-        return getSalarioBase() - (getSalarioBase() * getImposto() / 100);
+        System.out.println("Calculando salário do empregado...");
+        double salarioLiquido = getSalarioBase() - (getSalarioBase() * getImposto() / 100);
+        System.out.println("Salário Líquido: " + salarioLiquido);
+        
+        return salarioLiquido;
     }
 
     public void imprimirEmpregadoM() {
