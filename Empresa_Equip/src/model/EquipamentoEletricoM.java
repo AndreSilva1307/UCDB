@@ -42,6 +42,9 @@ public class EquipamentoEletricoM extends EquipamentoM {
     }
     public void setFonteCA(boolean fonteCA) {
         this.fonteCA = fonteCA;
+        if (fonteCA) {
+            this.fonteDC = false;
+        }
     }
 
     public boolean isFonteDC() {
@@ -49,5 +52,16 @@ public class EquipamentoEletricoM extends EquipamentoM {
     }
     public void setFonteDC(boolean fonteDC) {
         this.fonteDC = fonteDC;
+        if (fonteDC) {
+            this.fonteCA = false;
+        }
+    }
+
+    public int getPotenciaCalculada(EquipamentoEletricoM equipamento) {
+        return equipamento.getAlimentacao() * equipamento.getCorrente();
+    }
+
+    public int getPotenciaCalculada() {
+        return this.alimentacao * this.corrente;
     }
 }
