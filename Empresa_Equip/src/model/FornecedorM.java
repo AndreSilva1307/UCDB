@@ -26,4 +26,10 @@ public class FornecedorM {
     public void setRegional(String regional) {
         this.regional = regional;
     }
+
+    public void imprimirDados() {
+    System.out.println("----- Dados do Fornecedor -----");
+    System.out.println("Nome: " + getNome());
+    System.out.println("Regional: " + getRegional());
+    }
 }

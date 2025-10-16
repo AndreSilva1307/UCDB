@@ -64,4 +64,11 @@ public class EquipamentoEletricoM extends EquipamentoM {
     public int getPotenciaCalculada() {
         return this.alimentacao * this.corrente;
     }
+
+    public void imprimirDados() {
+    System.out.println("----- Dados do Equipamento Elétrico -----");
+    super.imprimirDados(); 
+    System.out.println("Alimentação: " + getAlimentacao() + "V");
+    System.out.println("Potência: " + getPotencia() + "W");
+    }
 }

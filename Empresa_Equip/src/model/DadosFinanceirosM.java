@@ -40,4 +40,12 @@ public class DadosFinanceirosM {
     public void setValorUnidade(float valorUnidade) {
         this.valorUnidade = valorUnidade;
     }
+
+    public void imprimirDados() {
+    System.out.println("----- Dados Financeiros -----");
+    System.out.println("Centro de Custo: " + getCentroCusto());
+    System.out.println("Data da Compra: " + getDataCompra());
+    System.out.println("Total de Unidades: " + getTotalUnidades());
+    System.out.println("Valor por Unidade: " + getValorUnidade());
+    }
 }

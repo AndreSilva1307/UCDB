@@ -40,4 +40,10 @@ public class EquipamentoM {
     public void setFornecedorM(FornecedorM fornecedorM) {
         this.fornecedorM = fornecedorM;
     }
+
+    public void imprimirDados() {
+    System.out.println("Código: " + getCodigo());
+    System.out.println("Nome: " + getNome());
+    System.out.println("Fabricante: " + getFabricante());
+    }
 }

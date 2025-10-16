@@ -77,4 +77,11 @@ public class EquipamentoMecanicoM extends EquipamentoM {
     public float getVazaoReal() {
         return getVazaoTeorica() * this.eficienciaVolumetrica;
     }
+
+    public void imprimirDados() {
+    System.out.println("----- Dados do Equipamento Mecânico -----");
+    super.imprimirDados(); 
+    System.out.println("RPM: " + getRpm());
+    System.out.println("Tipo de Fluido: " + getTipoFluido());
+    }
 }

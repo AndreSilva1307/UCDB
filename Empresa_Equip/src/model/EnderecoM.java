@@ -40,4 +40,12 @@ public class EnderecoM {
     public void setCep(String cep) {
         this.cep = cep;
     }
+
+    public void imprimirDados() {
+    System.out.println("----- Dados do Endereço -----");
+    System.out.println("Rua: " + getRua());
+    System.out.println("Bairro: " + getBairro());
+    System.out.println("Estado: " + getEstado());
+    System.out.println("CEP: " + getCep());
+    }
 }
